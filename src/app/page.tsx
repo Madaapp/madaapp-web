@@ -1,33 +1,88 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { FaCamera, FaMicrophone, FaSearch } from "react-icons/fa";
 import { IoMdSend } from "react-icons/io";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
+const cardConstants = [
+  { name: "Education", url: "https://www.google.com/" },
+  {
+    name: "Architecture",
+    url: "https://www.google.com/",
+  },
+
+  {
+    img: "/bg1.jpg",
+    url: "https://www.google.com/",
+  },
+  { url: "https://www.google.com/", img: "/bg2.jpg" },
+  {
+    name: "Innovation",
+    url: "https://www.google.com/",
+  },
+  { name: "Comms", url: "https://www.google.com/" },
+];
 
 export default function Home() {
-  const cardConstants = [
-    { name: "Education", url: "https://www.google.com/" },
-    {
-      name: "Architecture",
-      url: "https://www.google.com/",
-    },
+  const [prompt, setPrompt] = useState<any>(null);
+  const [show, setShow] = useState<boolean>(false);
 
-    {
-      img: "/bg1.jpg",
-      url: "https://www.google.com/",
-    },
-    { url: "https://www.google.com/", img: "/bg2.jpg" },
-    {
-      name: "Innovation",
-      url: "https://www.google.com/",
-    },
-    { name: "Comms", url: "https://www.google.com/" },
-  ];
+  useEffect(() => {
+    const handleEvent = (e: any) => {
+      e.preventDefault();
+      setPrompt(e);
+
+      if (!window.matchMedia("(display-mode: standalone)").matches) {
+        setShow(true);
+      }
+    };
+
+    window.addEventListener("beforeinstallprompt", handleEvent);
+  }, []);
+
+  const handleClick = () => {
+    if (prompt) {
+      prompt.prompt();
+
+      prompt.useChoice.then((res: any) => {
+        if (res.outcome === "accepted") {
+          setShow(false);
+          setPrompt(null);
+        }
+      });
+    }
+  };
 
   return (
-    <>
+    <div className="relative h-full w-full">
       <div className="w-full h-[10vh] relative flex flex-col items-center">
-        <p className="text-4xl mt-2 font-bold text-[#0B336D]">MaDa</p>
+        <div
+          style={{ justifyContent: !show ? "center" : "space-between" }}
+          className="flex items-center w-full px-2"
+        >
+          <p className="text-4xl mt-2 font-bold text-[#0B336D]">MaDa</p>
+          {show && (
+            <div
+              onClick={handleClick}
+              className="rounded-md cursor-pointer p-2 bg-gray-700 text-white"
+            >
+              Install
+            </div>
+          )}
+        </div>
         {/* search box: navigates */}
         <div className="w-[98%] md:w-[90%] bg-white shadow-2xl justify-between mt-2 flex items-center p-2 px-4 space-x-2 text-2xl rounded-full">
           <div className="flex items-center space-x-2">
@@ -52,6 +107,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+
       {/* circles */}
       <div className="relative h-[90vh] w-full flex items-center justify-center">
         <div className="md:w-[20rem] md:h-[20rem] w-[12rem] h-[12rem] rounded-full bg-white shadow-2xl flex items-center justify-center">
@@ -68,7 +124,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
