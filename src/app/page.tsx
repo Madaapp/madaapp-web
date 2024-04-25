@@ -26,10 +26,10 @@ export default function Home() {
 
   return (
     <>
-      <div className="w-full h-[10vh] flex flex-col items-center">
-        <p className="text-4xl font-bold text-[#0B336D]">MaDa</p>
+      <div className="w-full h-[10vh] relative flex flex-col items-center">
+        <p className="text-4xl mt-2 font-bold text-[#0B336D]">MaDa</p>
         {/* search box: navigates */}
-        <div className="w-[98%] md:w-[90%] bg-white shadow-2xl mt-4 justify-between flex items-center p-4 space-x-2 text-2xl rounded-full">
+        <div className="w-[98%] md:w-[90%] bg-white shadow-2xl justify-between mt-2 flex items-center p-2 px-4 space-x-2 text-2xl rounded-full">
           <div className="flex items-center space-x-2">
             <div className="text-slate-400">
               <FaSearch />
@@ -53,11 +53,11 @@ export default function Home() {
         </div>
       </div>
       {/* circles */}
-      <div className="relative h-[80vh] w-full flex md:mt-0 mt-10 items-center justify-center">
+      <div className="relative h-[90vh] w-full flex items-center justify-center">
         <div className="md:w-[20rem] md:h-[20rem] w-[12rem] h-[12rem] rounded-full bg-white shadow-2xl flex items-center justify-center">
           <Image src="/mada.png" alt="logo" width={150} height={150} />
         </div>
-        <div className="grid grid-cols-2 absolute h-full grid-rows-3 mt-6 w-full z-40 place-content-center">
+        <div className="grid grid-cols-2 absolute h-full grid-rows-3 mt-6 w-full z-40">
           {cardConstants.map(({ name, url, img }) => (
             <div
               key={name}
@@ -84,7 +84,7 @@ const LinkCircles = ({
   <>
     {img && (
       <div
-        className={`md:w-[12rem] w-[8rem]  h-[8rem] overflow-hidden  md:h-[12rem] bg-white flex md:text-xl text-lg font-bold items-center justify-center shadow-2xl rounded-full `}
+        className={`w-32  h-32  md:h-[15vh] md:w-[15vh]  overflow-hidden bg-white flex md:text-xl text-md font-bold items-center justify-center shadow-2xl rounded-full `}
         style={{ backgroundImage: `url(${img})`, backgroundSize: "cover" }}
       >
         {name}
@@ -92,7 +92,7 @@ const LinkCircles = ({
     )}
     {!img && (
       <div
-        className={`md:w-[12rem] w-[8rem]  h-[8rem] overflow-hidden  md:h-[12rem] bg-white flex md:text-xl text-lg font-bold items-center justify-center shadow-2xl rounded-full `}
+        className={`w-32  h-32 md:h-[15vh] md:w-[15vh]  overflow-hidden bg-white flex md:text-xl text-md font-bold items-center justify-center shadow-2xl rounded-full `}
         style={{ backgroundImage: `url(${img})`, backgroundSize: "cover" }}
       >
         {name}

@@ -17,7 +17,7 @@ const App = () => {
         {recording ? <FaStop color="green" /> : <FaMicrophone color="red" />}
       </div>
       <Link href={"/chat"}>
-        <div className="rounded-md p-2 absolute top-0 right-0 text-xl bg-gray-800 text-white">
+        <div className="rounded-md p-2 absolute top-6 right-6 text-xl bg-gray-800 text-white">
           <CgClose />
         </div>
       </Link>
