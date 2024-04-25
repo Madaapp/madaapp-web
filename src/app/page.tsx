@@ -3,19 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaCamera, FaMicrophone, FaSearch } from "react-icons/fa";
-import { IoMdSend } from "react-icons/io";
 import React, { useEffect, useState } from "react";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+import { GrInstall, GrInstallOption } from "react-icons/gr";
 
 const cardConstants = [
   { name: "Education", url: "https://www.google.com/" },
@@ -69,20 +58,16 @@ export default function Home() {
   return (
     <div className="relative h-full w-full">
       <div className="w-full h-[10vh] relative flex flex-col items-center">
-        <div
-          style={{ justifyContent: !show ? "center" : "space-between" }}
-          className="flex items-center w-full px-2"
-        >
-          <p className="text-4xl mt-2 font-bold text-[#0B336D]">MaDa</p>
-          {show && (
-            <div
-              onClick={handleClick}
-              className="rounded-md cursor-pointer p-2 bg-gray-700 text-white"
-            >
-              Install
-            </div>
-          )}
-        </div>
+        <p className="text-4xl mt-2 font-bold text-[#0B336D]">MaDa</p>
+        {show && (
+          <div
+            onClick={handleClick}
+            className="rounded-md absolute top-2 right-2 cursor-pointer p-2 bg-gray-700 text-white"
+          >
+            <GrInstallOption />
+          </div>
+        )}
+
         {/* search box: navigates */}
         <div className="w-[98%] md:w-[90%] bg-white shadow-2xl justify-between mt-2 flex items-center p-2 px-4 space-x-2 text-2xl rounded-full">
           <div className="flex items-center space-x-2">
