@@ -1,9 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaCamera, FaMicrophone, FaSearch } from "react-icons/fa";
+import { HiOutlineMicrophone } from "react-icons/hi";
 import { IoMdClose, IoMdSend } from "react-icons/io";
+import { TbSend2 } from "react-icons/tb";
 
 const dummy = {
   text: "Hi, how can I help you",
@@ -45,8 +48,8 @@ const App = () => {
         <div className="flex space-x-2">
           {!txt && !image && (
             <Link href={"/chat/recording"}>
-              <div className="text-blue-500">
-                <FaMicrophone />
+              <div className="text-gray-600">
+                <HiOutlineMicrophone />
               </div>
             </Link>
           )}
@@ -59,13 +62,13 @@ const App = () => {
               onChange={(e: any) => setImage(e.target.files?.[0])}
             />
             <div className="absolute top-0 bottom-0 left-0 right-0">
-              <FaCamera />
+              <Image src={"/cam.png"} height={24} width={24} alt="cam" />
             </div>
           </div>
 
           {(txt || image) && (
-            <div onClick={handleClick}>
-              <IoMdSend />
+            <div className="text-gray-600" onClick={handleClick}>
+              <TbSend2 />
             </div>
           )}
         </div>

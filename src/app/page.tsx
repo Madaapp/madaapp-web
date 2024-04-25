@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FaCamera, FaMicrophone, FaSearch } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import { GrInstall, GrInstallOption } from "react-icons/gr";
+import { HiOutlineMicrophone } from "react-icons/hi";
 
 const cardConstants = [
   { name: "Education", url: "https://www.google.com/" },
@@ -14,11 +15,11 @@ const cardConstants = [
   },
 
   {
-    img: "/bg1.jpg",
-    url: "https://www.google.com/",
-  },
-  { url: "https://www.google.com/", img: "/bg2.jpg" },
-  {
+    //   img: "/bg1.jpg",
+    //   url: "https://www.google.com/",
+    // },
+    // { url: "https://www.google.com/", img: "/bg2.jpg" },
+    // {
     name: "Innovation",
     url: "https://www.google.com/",
   },
@@ -58,7 +59,12 @@ export default function Home() {
   return (
     <div className="relative h-full w-full">
       <div className="w-full h-[10vh] relative flex flex-col items-center">
-        <p className="text-4xl mt-2 font-bold text-[#0B336D]">MaDa</p>
+        <p className="text-4xl mt-2 font-bold text-[#0B336D]">
+          <span className="text-[#25AAE1]">M</span>
+          <span className="text-[#D7DF21]">a</span>
+          <span className="text-[#8CC63F]">D</span>
+          <span className="text-[#D7DF21]">a</span>
+        </p>
         {show && (
           <div
             onClick={handleClick}
@@ -80,13 +86,13 @@ export default function Home() {
           </div>
           <div className="flex space-x-2">
             <Link href={"/chat/recording"}>
-              <div className="text-blue-500">
-                <FaMicrophone />
+              <div className="text-gray-600">
+                <HiOutlineMicrophone />
               </div>
             </Link>
             <Link href={"/chat"}>
-              <div className="text-red-400">
-                <FaCamera />
+              <div className="flex items-center justify-center">
+                <Image src={"/cam.png"} height={24} width={24} alt="cam" />
               </div>
             </Link>
           </div>
@@ -98,7 +104,7 @@ export default function Home() {
         <div className="md:w-[20rem] md:h-[20rem] w-[12rem] h-[12rem] rounded-full bg-white shadow-2xl flex items-center justify-center">
           <Image src="/mada.png" alt="logo" width={150} height={150} />
         </div>
-        <div className="grid grid-cols-2 absolute h-full grid-rows-3 mt-6 w-full z-40">
+        <div className="grid grid-cols-2 absolute h-full grid-rows-2 mt-6 w-full z-40">
           {cardConstants.map(({ name, url, img }) => (
             <div
               key={name}
