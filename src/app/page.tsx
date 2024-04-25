@@ -105,14 +105,24 @@ export default function Home() {
           <Image src="/mada.png" alt="logo" width={150} height={150} />
         </div>
         <div className="grid grid-cols-2 absolute h-full grid-rows-2 mt-6 w-full z-40">
-          {cardConstants.map(({ name, url, img }) => (
-            <div
-              key={name}
-              className="w-full h-full flex items-center justify-center"
-            >
-              <LinkCircles name={name} url={url} img={img} />
-            </div>
-          ))}
+          {cardConstants.map(
+            ({
+              name,
+              url,
+              img,
+            }: {
+              name: string;
+              url: string;
+              img?: string;
+            }) => (
+              <div
+                key={name}
+                className="w-full h-full flex items-center justify-center"
+              >
+                <LinkCircles name={name} url={url} img={img} />
+              </div>
+            )
+          )}
         </div>
       </div>
     </div>
