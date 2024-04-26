@@ -8,9 +8,9 @@ import { GrInstall, GrInstallOption } from "react-icons/gr";
 import { HiOutlineMicrophone } from "react-icons/hi";
 
 const cardConstants = [
-  { name: "Education", url: "https://www.google.com/" },
+  { name: "Learning Platform", url: "https://www.google.com/" },
   {
-    name: "Architecture",
+    name: "Digital Platform",
     url: "https://www.google.com/",
   },
 
@@ -20,10 +20,10 @@ const cardConstants = [
     // },
     // { url: "https://www.google.com/", img: "/bg2.jpg" },
     // {
-    name: "Innovation",
+    name: "Sales Marketing",
     url: "https://www.google.com/",
   },
-  { name: "Comms", url: "https://www.google.com/" },
+  { name: "Consultant Coaching", url: "https://www.google.com/" },
 ];
 
 export default function Home() {
@@ -60,10 +60,11 @@ export default function Home() {
     <div className="relative h-full w-full">
       <div className="w-full h-[10vh] relative flex flex-col items-center">
         <p className="text-4xl mt-2 font-bold text-[#0B336D]">
-          <span className="text-[#25AAE1]">M</span>
+          {/* <span className="text-[#25AAE1]">M</span>
           <span className="text-[#D7DF21]">a</span>
           <span className="text-[#8CC63F]">D</span>
-          <span className="text-[#D7DF21]">a</span>
+          <span className="text-[#D7DF21]">a</span> */}
+          MaDa
         </p>
         {show && (
           <div
@@ -101,28 +102,22 @@ export default function Home() {
 
       {/* circles */}
       <div className="relative h-[90vh] w-full flex items-center justify-center">
-        <div className="md:w-[20rem] md:h-[20rem] w-[12rem] h-[12rem] rounded-full bg-white shadow-2xl flex items-center justify-center">
-          <Image src="/mada.png" alt="logo" width={150} height={150} />
-        </div>
-        <div className="grid grid-cols-2 absolute h-full grid-rows-2 mt-6 w-full z-40">
-          {cardConstants.map(
-            ({
-              name,
-              url,
-              img,
-            }: {
-              name: string;
-              url: string;
-              img?: string;
-            }) => (
-              <div
-                key={name}
-                className="w-full h-full flex items-center justify-center"
-              >
-                <LinkCircles name={name} url={url} img={img} />
-              </div>
-            )
-          )}
+        <div className="grid grid-cols-2 absolute h-full grid-rows-3 mt-6 w-full z-40">
+          {cardConstants.slice(0, 2).map((card: any) => (
+            <div className="flex items-center justify-center">
+              <LinkCircles name={card.name} url={card.url} />
+            </div>
+          ))}
+          <div className="col-span-2 flex items-center justify-center">
+            <div className="md:w-[20rem] md:h-[20rem] w-[12rem] h-[12rem] rounded-full bg-blue-900 shadow-2xl flex items-center justify-center">
+              <Image src="/mada.png" alt="logo" width={100} height={100} />
+            </div>
+          </div>
+          {cardConstants.slice(2, 4).map((card: any) => (
+            <div className="flex items-center justify-center">
+              <LinkCircles name={card.name} url={card.url} />
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -139,21 +134,11 @@ const LinkCircles = ({
   img?: string;
 }) => (
   <>
-    {img && (
-      <div
-        className={`w-32  h-32  md:h-[15vh] md:w-[15vh]  overflow-hidden bg-white flex md:text-xl text-md font-bold items-center justify-center shadow-2xl rounded-full `}
-        style={{ backgroundImage: `url(${img})`, backgroundSize: "cover" }}
-      >
-        {name}
-      </div>
-    )}
-    {!img && (
-      <div
-        className={`w-32  h-32 md:h-[15vh] md:w-[15vh]  overflow-hidden bg-white flex md:text-xl text-md font-bold items-center justify-center shadow-2xl rounded-full `}
-        style={{ backgroundImage: `url(${img})`, backgroundSize: "cover" }}
-      >
-        {name}
-      </div>
-    )}
+    <div
+      className={`w-32  h-32  md:h-[15vh] md:w-[15vh]  overflow-hidden bg-white flex md:text-xl text-md font-bold items-center justify-center shadow-2xl rounded-full `}
+      style={{ backgroundImage: `url(${img})`, backgroundSize: "cover" }}
+    >
+      <p className="text-center text-gray-700">{name}</p>
+    </div>
   </>
 );
