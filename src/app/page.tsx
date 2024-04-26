@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FaCamera, FaMicrophone, FaSearch } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
-import { GrInstall, GrInstallOption } from "react-icons/gr";
+import { GrInstallOption } from "react-icons/gr";
 import { HiOutlineMicrophone } from "react-icons/hi";
 
 const cardConstants = [
@@ -15,11 +15,6 @@ const cardConstants = [
   },
 
   {
-    //   img: "/bg1.jpg",
-    //   url: "https://www.google.com/",
-    // },
-    // { url: "https://www.google.com/", img: "/bg2.jpg" },
-    // {
     name: "Sales Marketing",
     url: "https://www.google.com/",
   },
@@ -104,7 +99,7 @@ export default function Home() {
       <div className="relative h-[90vh] w-full flex items-center justify-center">
         <div className="grid grid-cols-2 absolute h-full grid-rows-3 mt-6 w-full z-40">
           {cardConstants.slice(0, 2).map((card: any) => (
-            <div className="flex items-center justify-center">
+            <div key={card.name} className="flex items-center justify-center">
               <LinkCircles name={card.name} url={card.url} />
             </div>
           ))}
@@ -114,7 +109,7 @@ export default function Home() {
             </div>
           </div>
           {cardConstants.slice(2, 4).map((card: any) => (
-            <div className="flex items-center justify-center">
+            <div key={card.name} className="flex items-center justify-center">
               <LinkCircles name={card.name} url={card.url} />
             </div>
           ))}
