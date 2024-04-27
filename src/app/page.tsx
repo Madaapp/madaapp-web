@@ -96,7 +96,7 @@ export default function Home() {
       </div>
 
       {/* circles */}
-      <div className="relative h-[90vh] w-full flex items-center justify-center">
+      <div className="relative h-[90vh] w-full flex mt-6  items-center justify-center">
         <div className="grid grid-cols-2 absolute h-full grid-rows-3 mt-6 w-full z-40">
           {cardConstants.slice(0, 2).map((card: any) => (
             <div key={card.name} className="flex items-center justify-center">
@@ -104,8 +104,8 @@ export default function Home() {
             </div>
           ))}
           <div className="col-span-2 flex items-center justify-center">
-            <div className="md:w-[20rem] md:h-[20rem] w-[12rem] h-[12rem] rounded-full bg-blue-900 shadow-2xl flex items-center justify-center">
-              <Image src="/mada.png" alt="logo" width={100} height={100} />
+            <div className="md:w-[20rem] md:h-[20rem] w-[15rem] h-[15rem] rounded-full bg-blue-900 shadow-2xl flex items-center justify-center">
+              <Image src="/mada.png" alt="logo" width={150} height={150} />
             </div>
           </div>
           {cardConstants.slice(2, 4).map((card: any) => (
