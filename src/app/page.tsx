@@ -100,8 +100,8 @@ export default function Home() {
       {/* circles */}
       <div className="relative h-[90vh] pb-6 w-full flex mt-6  items-center justify-center">
         <div className="grid grid-cols-2 h-full grid-rows-3 mt-6 w-full z-40">
-          {cardConstants.slice(0, 2).map((card: any) => (
-            <div key={card.name1} className="flex items-center justify-center">
+          {cardConstants.slice(0, 2).map((card: any, index: number) => (
+            <div key={index} className="flex items-center justify-center">
               <LinkCircles name={[card.name1, card.name2]} url={card.url} />
             </div>
           ))}
@@ -110,8 +110,8 @@ export default function Home() {
               <Image src="/mada.png" alt="logo" width={150} height={150} />
             </div>
           </div>
-          {cardConstants.slice(2, 4).map((card: any) => (
-            <div key={card.name1} className="flex items-center justify-center">
+          {cardConstants.slice(2, 4).map((card: any, index: number) => (
+            <div key={index} className="flex items-center justify-center">
               <LinkCircles name={[card.name1, card.name2]} url={card.url} />
             </div>
           ))}
