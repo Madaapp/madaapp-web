@@ -8,19 +8,19 @@ import { GrInstallOption } from "react-icons/gr";
 import { HiOutlineMicrophone } from "react-icons/hi";
 
 const cardConstants = [
-  { name1: "Learning", name2: "Platform", url: "https://www.google.com/" },
+  { word1: "Learning", word2: "Platform", url: "https://www.google.com/" },
   {
-    name1: "Digital",
-    name2: "Platform",
+    word1: "Digital",
+    word2: "Platform",
     url: "https://www.google.com/",
   },
 
   {
-    name1: "Sales",
-    name2: "Marketing",
+    word1: "Sales",
+    word2: "Marketing",
     url: "https://www.google.com/",
   },
-  { name1: "Consultant", url: "https://www.google.com/", name2: "Coaching" },
+  { word1: "Consultant", url: "https://www.google.com/", word2: "Coaching" },
 ];
 
 export default function Home() {
@@ -100,21 +100,43 @@ export default function Home() {
       {/* circles */}
       <div className="relative h-[90vh] pb-6 w-full flex mt-6  items-center justify-center">
         <div className="grid grid-cols-2 h-full grid-rows-3 mt-6 w-full z-40">
-          {cardConstants.slice(0, 2).map((card: any, index: number) => (
-            <div key={index} className="flex items-center justify-center">
-              <LinkCircles name={[card.name1, card.name2]} url={card.url} />
-            </div>
-          ))}
+          {cardConstants
+            .slice(0, 2)
+            .map(
+              (
+                {
+                  word1,
+                  word2,
+                  url,
+                }: { word1: string; word2: string; url: string },
+                index: number
+              ) => (
+                <div key={index} className="flex items-center justify-center">
+                  <LinkCircles name={[word1, word2]} url={url} />
+                </div>
+              )
+            )}
           <div className="col-span-2 flex items-center justify-center">
             <div className="md:w-[20rem] md:h-[20rem] w-[15rem] h-[15rem] rounded-full bg-blue-900 shadow-2xl flex items-center justify-center">
               <Image src="/mada.png" alt="logo" width={150} height={150} />
             </div>
           </div>
-          {cardConstants.slice(2, 4).map((card: any, index: number) => (
-            <div key={index} className="flex items-center justify-center">
-              <LinkCircles name={[card.name1, card.name2]} url={card.url} />
-            </div>
-          ))}
+          {cardConstants
+            .slice(2, 4)
+            .map(
+              (
+                {
+                  word1,
+                  word2,
+                  url,
+                }: { word1: string; word2: string; url: string },
+                index: number
+              ) => (
+                <div key={index} className="flex items-center justify-center">
+                  <LinkCircles name={[word1, word2]} url={url} />
+                </div>
+              )
+            )}
         </div>
       </div>
     </div>
