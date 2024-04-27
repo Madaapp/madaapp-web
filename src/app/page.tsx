@@ -8,17 +8,19 @@ import { GrInstallOption } from "react-icons/gr";
 import { HiOutlineMicrophone } from "react-icons/hi";
 
 const cardConstants = [
-  { name: "Learning Platform", url: "https://www.google.com/" },
+  { name1: "Learning", name2: "Platform", url: "https://www.google.com/" },
   {
-    name: "Digital Platform",
+    name1: "Digital",
+    name2: "Platform",
     url: "https://www.google.com/",
   },
 
   {
-    name: "Sales Marketing",
+    name1: "Sales",
+    name2: "Marketing",
     url: "https://www.google.com/",
   },
-  { name: "Consultant Coaching", url: "https://www.google.com/" },
+  { name1: "Consultant", url: "https://www.google.com/", name2: "Coaching" },
 ];
 
 export default function Home() {
@@ -96,11 +98,11 @@ export default function Home() {
       </div>
 
       {/* circles */}
-      <div className="relative h-[90vh] w-full flex mt-6  items-center justify-center">
-        <div className="grid grid-cols-2 absolute h-full grid-rows-3 mt-6 w-full z-40">
+      <div className="relative h-[90vh] pb-6 w-full flex mt-6  items-center justify-center">
+        <div className="grid grid-cols-2 h-full grid-rows-3 mt-6 w-full z-40">
           {cardConstants.slice(0, 2).map((card: any) => (
             <div key={card.name} className="flex items-center justify-center">
-              <LinkCircles name={card.name} url={card.url} />
+              <LinkCircles name={[card.name1, card.name2]} url={card.url} />
             </div>
           ))}
           <div className="col-span-2 flex items-center justify-center">
@@ -110,7 +112,7 @@ export default function Home() {
           </div>
           {cardConstants.slice(2, 4).map((card: any) => (
             <div key={card.name} className="flex items-center justify-center">
-              <LinkCircles name={card.name} url={card.url} />
+              <LinkCircles name={[card.name1, card.name2]} url={card.url} />
             </div>
           ))}
         </div>
@@ -124,16 +126,18 @@ const LinkCircles = ({
   url,
   img,
 }: {
-  name?: string;
+  name?: string[];
   url?: string;
   img?: string;
 }) => (
   <>
     <div
-      className={`w-32  h-32  md:h-[15vh] md:w-[15vh]  overflow-hidden bg-white flex md:text-xl text-md font-bold items-center justify-center shadow-2xl rounded-full `}
+      className={`w-32  h-32  md:h-[15vh] md:w-[15vh]  overflow-hidden bg-white flex flex-col md:text-xl text-md font-bold items-center justify-center shadow-2xl rounded-full `}
       style={{ backgroundImage: `url(${img})`, backgroundSize: "cover" }}
     >
-      <p className="text-center text-gray-700">{name}</p>
+      {name?.map((name: string) => (
+        <p className="text-center text-gray-700">{name}</p>
+      ))}
     </div>
   </>
 );
