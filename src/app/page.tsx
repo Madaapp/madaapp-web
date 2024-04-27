@@ -20,7 +20,7 @@ const cardConstants = [
     word2: "Marketing",
     url: "https://www.google.com/",
   },
-  { word1: "Consultant", url: "https://www.google.com/", word2: "Coaching" },
+  { word1: "Coaching", url: "https://www.google.com/", word2: "Consulting" },
 ];
 
 export default function Home() {
